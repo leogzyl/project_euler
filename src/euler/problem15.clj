@@ -8,16 +8,24 @@
 
 ; How many such routes are there through a 20×20 grid?
 
-(defn nav [i j n accum]
-    (for [di [0 1]
-          dj [0 1]
-          :let [i1 (+ i di)
-                j1 (+ j dj)]
-          :when (not= [di dj] [0 0])
-          :when (not= [di dj] [1 1])]
-      (do 
-        (prn "i" i "j" j "i1" i1 "j1" j1 "di" di "dj" dj)
-        (if (= [i j] [n n])
-          (flatten (conj accum [i1 j1]))
-          (nav i1 j1 n (conj accum [i j]))))))
-   
+; -----------------------------------------------
+  
+; https://en.wikipedia.org/wiki/Permutation#Permutations_of_multisets
+
+; Notice that every path is formed by n vertical and n horizontal segments,
+; and each type of segment is repeated n times, so we are dealing 
+; with permutations of multisets:
+
+; 2n!/(n!)^2
+
+(defn bigexp [num exponent]
+  (if (= exponent 1)
+    num
+    (* (bigint num) (bigexp num (dec exponent)))))
+
+(defn bigfact [n]
+  (if (= n 1)
+    n
+    (* (bigint n) (bigfact (dec n)))))
+
+(def problem15 (/ (bigfact 40) (bigexp (bigfact 20) 2)))

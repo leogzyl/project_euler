@@ -1,5 +1,5 @@
 (ns euler.problem16
-  (:use [euler.problem15])
+  (:use euler.problem15)
   (:require [clojure.string :as str]))
 
 ; Power digit sum
@@ -9,11 +9,13 @@
 
 ; What is the sum of the digits of the number 2^1000?
 
-(def problem16 
+(defn sumdigits [n] 
   (->> 
     (-> 
-      (bigexp 2 1000)
+      n
       str 
       (clojure.string/split #"")) 
     (map #(Integer/parseInt %)) 
     (reduce +)))
+
+(def problem16 (sumdigits (bigexp 2 1000)))

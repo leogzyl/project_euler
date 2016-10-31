@@ -36,17 +36,17 @@
 (def calendar
     (map assoc 
       (for [year  (range 1900 2001) 
-            month (keys (month-days year))
+            month (range 1 13)
             day   (range 1 (inc ((month-days year) month)))]
         {:year year :month month :day day})
       (repeat :dow)  
       (cycle ['Mon 'Tue 'Wed 'Thu 'Fri 'Sat 'Sun])))
 
-(def sundays 
+(def twentieth-century-sundays 
   (for [date calendar 
         :when (< 1900 (:year date)) 
         :when (= (:day date) 1) 
         :when (= (:dow date) 'Sun)]
     date))
     
-(def problem19 (count sundays))
+(def problem19 (count twentieth-century-sundays))

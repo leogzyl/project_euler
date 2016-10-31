@@ -1,5 +1,5 @@
 (ns euler.problem10
-  (:use [euler.problem7]))
+  (:use euler.problem7))
 
 ; Summation of primes
 ; Problem 10

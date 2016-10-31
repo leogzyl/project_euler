@@ -8,17 +8,17 @@
 ;; What is the largest prime factor of the number 600851475143 ?
 
 
-(defn- divisors [x] 
-    (filter #(zero? (rem x %))
-        (range 2 (inc (Math/sqrt x)))))
+(defn divisors [x] 
+  (filter #(zero? (rem x %))
+    (range 2 (inc (Math/sqrt x)))))
 
-(defn- prime? [x] (empty? (divisors x)))
+(defn prime? [x] (empty? (divisors x)))
 
-(defn- next-prime [after] 
-    (loop [x (inc after)] 
-        (if (prime? x) 
-            x
-            (recur (inc x)))))
+(defn next-prime [after] 
+  (loop [x (inc after)] 
+    (if (prime? x) 
+      x
+      (recur (inc x)))))
 
 (def primes (iterate next-prime 2))
 

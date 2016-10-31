@@ -29,4 +29,4 @@
 (defn num-divisors [n]
   (reduce * (for [[p c] (frequencies (pfd n))] (+ c 1))))
   
-;(def problem12 (first (filter #(> (num-divisors %) 5) triangulars)))
+(def problem12 (first (filter #(> (num-divisors %) 500) triangulars)))

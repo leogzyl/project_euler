@@ -1,5 +1,5 @@
 (ns euler.problem7
-  (:use [euler.problem3]))
+  (:use euler.problem3))
 
 ; 10001st prime
 ; Problem 7

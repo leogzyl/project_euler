@@ -59,9 +59,8 @@
   (parse-num-seq (split-number n) []))
 
 (def problem17 
-  (-> 
-    (range 1 1001) 
-    (#(map written-number %)) 
-    flatten 
-    (#(apply str %)) 
-    count))
+  (->> (range 1 1001) 
+       (map written-number) 
+       flatten 
+       (apply str) 
+       count))
